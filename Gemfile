@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rails', '4.1.4'
 
 ruby '2.1.2'
 
@@ -14,8 +15,7 @@ ruby '2.1.2'
  gem 'bootstrap-sass', '~> 3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
-gem 'pg' 
+ 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -33,6 +33,9 @@ gem 'faker'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+gem 'devise'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
