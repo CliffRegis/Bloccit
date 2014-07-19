@@ -17,7 +17,8 @@ users = User.all
  50.times do
    Post.create(
      title:  Faker::Lorem.sentence,
-     body:   Faker::Lorem.paragraph
+     body:   Faker::Lorem.paragraph,
+     user: users.sample
     )
  end
  posts = Post.all

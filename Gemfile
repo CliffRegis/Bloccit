@@ -13,10 +13,10 @@ ruby '2.1.2'
    gem 'pg'
   
  end
- 
- gem 'figaro'
 
- gem 'bootstrap-sass', '~> 3.1.1'
+gem 'figaro'
+
+gem 'bootstrap-sass', '~> 3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
  
@@ -40,6 +40,8 @@ gem 'faker'
 gem 'turbolinks'
 
 gem 'devise'
+
+gem 'pundit'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
