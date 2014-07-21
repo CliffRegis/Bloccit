@@ -14,6 +14,8 @@ ruby '2.1.2'
   
  end
 
+gem 'redcarpet'
+
 gem 'figaro'
 
 gem 'simple_form'
