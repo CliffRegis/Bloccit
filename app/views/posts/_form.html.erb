@@ -12,7 +12,7 @@
   
   <%=  simple_form_for(post.errors[:title]) do %>
     <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', placeholder: "Enter your post title" %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
   <% end %>
 
   <%=  simple_form_for(post.errors[:body]) do %>
