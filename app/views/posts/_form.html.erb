@@ -10,16 +10,16 @@
     </div>
   <% end %>
   
-  <%= simple_form_for(post.errors[:title]) do %>
+  <%=  simple_form_for(post.errors[:title]) do %>
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
   <% end %>
 
-  <%= simple_form_for(post.errors[:body]) do %>
+  <%=  simple_form_for(post.errors[:body]) do %>
     <%= f.label :body %>
     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
   <% end %>
-  
+
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>

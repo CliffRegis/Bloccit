@@ -6,5 +6,6 @@ module ApplicationHelper
     else
         content_tag :div, capture(&block), class: 'form_group'  
     end
+    
   end
 end
