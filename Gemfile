@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 
-gem 'pg'
-
 ruby '2.1.2'
 
  group :production do
@@ -11,10 +9,18 @@ ruby '2.1.2'
  
  group :development do
    gem 'pg'
-  
+
  end
 
+gem 'fog'
+
 gem 'redcarpet'
+
+gem 'render-as-markdown'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
 
 gem 'figaro'
 
