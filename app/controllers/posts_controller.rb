@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update]
+
   def show
     @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -12,8 +13,6 @@ class PostsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:id])
-    authorize @post
   end
 
   def create
@@ -34,8 +33,6 @@ class PostsController < ApplicationController
   def update
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-    authorize @post
-
     if @post.update_attributes(params.require(:post).permit(:title, :body))
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
@@ -46,9 +43,13 @@ class PostsController < ApplicationController
   end
 
  private
+  def set_post
+    @post = Post.find(params[:id])
+    authorize @post
+  end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :image, :body)
   end 
 end
 
