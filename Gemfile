@@ -3,6 +3,8 @@ gem 'rails', '4.1.4'
 
 ruby '2.1.2'
 
+gem 'pg'
+
  group :production do
       gem 'rails_12factor'
  end
