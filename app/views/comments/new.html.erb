@@ -1,0 +1,16 @@
+
+ <h1>New comment</h1>
+ 
+ <div class="row">
+   <div class="col-md-4">
+     <p>Guidelines for comment</p>
+     <ul>
+       <li>comment the it rhymes.</li>
+       <li>Don't use the letter "A".</li>
+       <li>comment hashtags will get you banned.</li>
+     </ul>
+   </div>
+   <div class="col-md-8">
+     <%= render partial: 'form', locals: {post: @post} %>
+   </div>
+ </div>

@@ -10,8 +10,13 @@ gem 'pg'
  end
  
  group :development do
-   gem 'pg'
+ 
+  gem 'pg'
+ 
+ gem 'binding_of_caller'
 
+  gem 'better_errors'
+ 
  end
 
 gem 'fog'
@@ -56,6 +61,7 @@ gem 'devise'
 gem 'pundit'
 
 gem 'will_paginate', '~> 3.0.5'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
