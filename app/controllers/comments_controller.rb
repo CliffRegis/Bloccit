@@ -6,8 +6,7 @@ def create
   @comment.user_id = current_user.id 
 end
 
-
- def comment_params
+def comment_params
         params.require(:comment).permit(:user_id, :post_id, :body)
    end
 end
