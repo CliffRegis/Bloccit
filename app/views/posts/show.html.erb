@@ -14,8 +14,8 @@
         </div>
 
         <div class="col-md-8">
-     
-          <% render "form", class: 'btn btn-success' %>
+     <%= render :partial => "comments/form", locals: {post: @post, comment: @comment}, class: 'btn btn-success' %>
+        
    </div>
 </div>
 
