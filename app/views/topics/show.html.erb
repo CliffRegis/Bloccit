@@ -24,7 +24,7 @@
              <%= image_tag(post.image) %>
             </small>
 
-
+            <hr />
         </div>
       </div>
     <% end %>
@@ -34,5 +34,9 @@
     <% if policy(Post.new).create? %>
       <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
     <% end %>
-  </div>
+      <% if policy(@topic).destroy? %>
+      <%= link_to "Delete Topic", @topic, :method => :delete, class: 'btn btn-danger', :confirm => 'are you sure you want to delete' %>
+      <% end %>
+   
+    </div>
 </div> 

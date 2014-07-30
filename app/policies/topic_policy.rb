@@ -1,5 +1,4 @@
 class TopicPolicy < ApplicationPolicy
- 
   def index?
     true
   end
@@ -8,7 +7,12 @@ class TopicPolicy < ApplicationPolicy
     user.present? && user.role?(:admin)
   end
  
+  def destroy?
+    user.present? && user.role?(:admin)
+  end
+ 
   def update?
     create?
   end
+
 end

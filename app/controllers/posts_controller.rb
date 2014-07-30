@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
+  
+  def index
+     @posts = Post.all
+  end
 
   def show
     @topic = Topic.find(params[:topic_id])
@@ -15,7 +19,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.find(params[:id])
+    @post = Post.find(params[:id])
+    authorize @post, :edit?
   end
 
   def create
@@ -44,7 +50,15 @@ class PostsController < ApplicationController
       render :new
     end
   end
+  
 
+  def destroy
+    @post = Post.find(params[:id])
+    authorize @post
+    @post.destroy
+    redirect_to topics_path, :notice => "Post or Comment was deleted"
+  end
+ 
  private
   def set_post
     @post = Post.find(params[:id])
@@ -52,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :image, :body)
+    params.require(:post).permit(:title, :id, :name, :image, :body)
   end 
 end
 

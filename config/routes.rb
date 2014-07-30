@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   end
   
   resources :posts do
-    resources :comments, only: [:create, :destory]
+    resources :comments, only: [:create, :destroy]
   end 
   
- get 'about' => 'welcome#about'
+  resources :comments
+  
+  get 'about' => 'welcome#about'
  
- root to: 'welcome#index'
+  root to: 'welcome#index'
   
 end
