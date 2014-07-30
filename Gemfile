@@ -6,18 +6,22 @@ ruby '2.1.2'
 gem 'pg'
 
  group :production do
-      gem 'rails_12factor'
+   gem 'rails_12factor'
  end
  
  group :development do
+   gem 'pg'
  
-  gem 'pg'
- 
- gem 'binding_of_caller'
+   gem 'binding_of_caller'
 
-  gem 'better_errors'
- 
+   gem 'better_errors'
  end
+
+ group :test do
+  gem 'rspec-rails'
+ end
+
+
 
 gem 'fog'
 
