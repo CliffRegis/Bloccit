@@ -1,0 +1,7 @@
+<% if policy(Ballot.new).create? %>
+  <div class= "vote-arrows">
+    <div><%= link_to "", post_up_ballot_path(post), class: 'glyphicon glyphicon-chevron-up', method: :post %></div>
+    <div><strong><%= post.points %></strong></div>
+    <div><%= link_to "", post_down_ballot_path(post), class: 'glyphicon glyphicon-chevron-down', method: :post %></div>
+  </div>
+<% end %>

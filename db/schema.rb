@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724175115) do
+ActiveRecord::Schema.define(version: 20140803171249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ballots", force: true do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "value"
+  end
+
+  add_index "ballots", ["post_id"], name: "index_ballots_on_post_id", using: :btree
+  add_index "ballots", ["user_id"], name: "index_ballots_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -35,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140724175115) do
     t.integer  "topic_id"
     t.string   "image"
     t.text     "comments"
+    t.float    "rank"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
@@ -72,5 +82,10 @@ ActiveRecord::Schema.define(version: 20140724175115) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+  end
 
 end

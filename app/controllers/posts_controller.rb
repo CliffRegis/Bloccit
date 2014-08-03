@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
+    authorize @post
     if @post.update(params.require(:post).permit(:title, :body))
       flash[:notice] = "Post was updated."
       redirect_to topics_path

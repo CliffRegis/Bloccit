@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   
   resources :posts do
     resources :comments, only: [:create, :destroy]
-  end 
   
+  post '/up-ballot' => 'ballots#up_ballot', as: :up_ballot
+  post '/down-ballot' => 'ballots#down_ballot', as: :down_ballot
+
+end
+
+  resources :ballots, only: [:create]
   resources :comments
   
   get 'about' => 'welcome#about'
