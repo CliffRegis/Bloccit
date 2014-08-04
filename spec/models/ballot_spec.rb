@@ -1,45 +1,34 @@
 require 'rails_helper'
 
-describe Ballot do
-  describe "validation" do
-    
-    before do
-        @b = Ballot.create(value)
-        up_ballot = ballot(value: 1)
-        down_ballot = ballot(value: -1)
-    end
-    
+describe Ballot do 
+   include TestFactories
 
-    describe "#up_ballots" do
-      it "true for an up ballot"
-       expect(@b.up_ballot).should be_true
-      end
-      it "false for a down ballot" do
-        expect(@b.up_ballot).should be_false
-    end
-    
-    describe "#down_ballots" do
-      it "true for an down ballot"
-      expect(@b.down_ballot).should be_true
-    end
-      it "false for a up ballot" do
-     expect(@b.down_ballot).should be_false
-    end
+  describe "validations" do
+    describe 'value validation' do
+
+    it "only allows -1 or 1 as values" do 
+      b = Ballot.new(value: 1) 
+      expect( b.valid? ).to eq(true)
+
+      b2 = Ballot.new(value: -1) 
+      expect( b2.valid?).to eq(true) 
+
+      bad_b = Ballot.new(value: 2)
+      expect(bad_b.valid?).to eq(false)
+    end 
   end
+end
+
+  describe 'after_save' do 
+    it "calls 'Post#update_rank' after save" do 
+      post = post_without_user
+      ballot = Ballot.new(value:1, post: post) 
+      expect(post).to receive(:update_rank) 
+        ballot.save
+    end 
+  end 
 end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
