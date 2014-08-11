@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   def index
+    @topic = Topic.new
     @topics = Topic.visible_to(current_user).paginate(page: params[:page], per_page: 10)
     authorize @topics 
   end
@@ -11,8 +12,9 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
     authorize @topic
+    @posts = @topic.posts.includes(:user).includes(:comments).paginate(page: params[:page], per_page: 10)
+   
   end
 
   def edit
@@ -37,6 +39,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     authorize @topic
+
     if @topic.save
       redirect_to @topic, notice: "Topic was saved successfully."
     else
@@ -46,9 +49,10 @@ class TopicsController < ApplicationController
   end
    
   def update
-    @topic = Topic.find(topic_params)
+    @topic = Topic.find(params[:id])
     authorize @topic
-    if @topic.update_attributes(params.require(:topic).permit(:name, :description, :public))
+    
+    if @topic.update_attributes(params.require(:topic).permit(:name, :id, :description, :public))
       redirect_to @topic
     else
       flash[:error] = "Error saving topic. Please try again"
@@ -59,6 +63,6 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:name, :id, :description, :public)
+    params.require(:topic).permit(:name,:topic_id, :id, :description, :public)
   end
 end
