@@ -14,14 +14,14 @@ gem 'pg'
  
    gem 'binding_of_caller'
 
-   gem 'better_errors'
-
-   gem 'capybara'
-   
+   gem 'better_errors' 
  end
 
  group :test do
   gem 'rspec-rails'
+  gem 'capybara'
+    gem 'database_cleaner'
+      gem 'factory_girl_rails', '~> 4.0'
  end
 
 

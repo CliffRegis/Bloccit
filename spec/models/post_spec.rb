@@ -1,4 +1,4 @@
-module TestFactories
+module FactoryGirl
 
    require 'rails_helper'
 
@@ -32,7 +32,7 @@ module TestFactories
 
         describe 'creation' do
           it 'generates an automatic up-ballot' do
-            user = authenticated_user
+        
             @post = Post.create(title: 'Post title', body: 'This is a small post body string', user: user)
             expect( post.up_ballots ).to eq(1)
           end

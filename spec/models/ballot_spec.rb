@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Ballot do 
-   include TestFactories
+   include FactoryGirl
 
   describe "validations" do
     describe 'value validation' do
