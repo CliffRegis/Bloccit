@@ -23,8 +23,11 @@
     <div>
       <h3> <%=pluralize(@post.points, 'point') %> </h3>
       <small>
+       
         <%= pluralize(@post.up_ballots, 'up vote') %>,
-        <%= pluralize(@post.down_ballots, 'down vote') %>
+        <%= pluralize(@post.down_ballots, 'down vote') %>,
+     <div class='js-comments-count'>
+     <%= pluralize(@comments.count,'comment') %></div>
       </small>
     </div>
    
