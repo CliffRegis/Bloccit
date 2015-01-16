@@ -5,15 +5,14 @@ ruby '2.1.2'
 
 gem 'pg'
 
- group :production do
-   gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
  end
  
  group :development do
-   gem 'pg'
- 
+   gem 'sqlite3'
    gem 'binding_of_caller'
-
    gem 'better_errors' 
  end
 

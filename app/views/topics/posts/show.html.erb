@@ -1,40 +1,40 @@
 <div><h1><%= markdown @post.title %> </h1> </div>
   <%= render :partial => "/ballots/ballot", locals: {post: @post, ballot: @ballot } %>
  
-<p> <%= markdown @post.body%></p>   
+  <p> <%= markdown @post.body%></p>   
   <div class="row">
     <div class="col-md-8">
-    <h2> Comments</h2>
-    <div class='js-comments'>
-    <%= render partial: "comments/comment", locals: {topic: @topic, post: @post, comment: @comment} %> 
-    </div>
+      <h2> Comments</h2>
+        <div class='js-comments'>
+        <%= render partial: "comments/comment", locals: {topic: @topic, post: @post, comment: @comment} %> 
+        </div>
     </div>
   </div>
 
   <div class="col-md-8">
     <div class= 'new-comment'>
-    <%= render :partial => "comments/form", locals: {post: @post, comment: @comment}, class: 'btn btn-success' %>
+      <%= render :partial => "comments/form", locals: {post: @post, comment: @comment}, class: 'btn btn-success' %>
   
-    <% if policy(@post).edit? %>
+      <% if policy(@post).edit? %>
       <%= link_to "Edit Post", edit_topic_post_path(@topic,@post), class: 'btn btn-success' %>
-    <% end %>
+      <% end %>
    
-    <% if policy(@post).destroy? %>
-      <%= link_to "Delete Post", [@topic, @post], :method => :delete, class: 'btn btn-danger', :confirm => 'are you sure you want to delete' %>
-    <% end %>
+      <% if policy(@post).destroy? %>
+      <%= link_to "Delete Post",[@topic, @post], :method => :delete, class: 'btn btn-danger', :confirm => 'are you sure you want to delete' %>
+      <% end %>
     </div>
+    
     <div>
       <h3> <%=pluralize(@post.points, 'point') %> </h3>
       <small>
-       
         <%= pluralize(@post.up_ballots, 'up vote') %>,
         <%= pluralize(@post.down_ballots, 'down vote') %>,
-     <div class='js-comments-count'>
-     <%= pluralize(@comments.count,'comment') %></div>
+          <div class='js-comments-count'>
+          <%= pluralize(@comments.count,'comment') %>
+          </div>
       </small>
     </div>
-   
-      <%= render :partial => "favorites/favorite", locals:
+       <%= render :partial => "favorites/favorite", locals:
        {post: @post} %>
   </div>
 

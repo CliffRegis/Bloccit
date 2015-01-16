@@ -1,22 +1,37 @@
-<h1><%= @topic.name %></h1>
+<p id="notice"> <%= notice %></p>
 
-<% if policy(@topic).update? %>
-  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
-<% end %>
+<h1> <%= @topic.title %></h1>
 
-<div class="row">
-  <div class="col-md-8">
-    <p class="lead"><%= @topic.description %></p>
-    <%= render @posts %>
-     <%= will_paginate @posts %>
-  </div>
-  <div class="col-md-4">
-    <% if policy(Post.new).create? %>
-      <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
-    <% end %>
-      <% if policy(@topic).destroy? %>
-      <%= link_to "Delete Topic", @topic, :method => :delete, class: 'btn btn-danger', :confirm => 'are you sure you want to delete' %>
-      <% end %>
-   
-    </div>
-</div> 
+<p>  <%= @topic.content %> </p>
+
+<%= link_to 'Edit Topic', edit_topic_path(@topics) %> |
+<%= link_to 'Back', topics_path %>
+
+<h2> Posts </h2>
+  <%= form_tag topic_path(@topic, @posts), :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "search", :title => nil %>
+  </p>
+  <% end %>
+
+<table class="table" style="width:100%" >
+  <tr>
+    <th><%= sortable 'title' %></th>
+    <th><%= sortable 'points' %></th> 
+    <th><%= sortable 'created_at', 'Date' %></th>
+  </tr>
+   <% @posts.each do |post| %>
+  <tr>
+    <td><%= link_to post.title, [@topic, post] %></td>
+    <td><%=pluralize(post.points, 'point') %></td> 
+    <td><%=post.created_at.to_formatted_s(:short) %></td> 
+  </tr>
+  <% end %>
+</table>
+<br>
+
+<%= link_to 'New Post', new_topic_post_path(@topic, @post), class: 'btn btn-success' 'alert alert-success' %> 
+    
+
+     

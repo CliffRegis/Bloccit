@@ -10,6 +10,7 @@ class Topics::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
+    render :action => :show
     authorize @topic
   end
 
@@ -22,7 +23,6 @@ class Topics::PostsController < ApplicationController
   def edit
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-   
     authorize @post
   end
 
