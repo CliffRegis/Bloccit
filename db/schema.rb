@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140806175943) do
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+  #add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"
