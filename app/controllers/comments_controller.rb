@@ -3,21 +3,16 @@ class CommentsController < ApplicationController
   
   def create
     @post = Post.find(params[:post_id])
+    @topic = @post.topic
     @comment = @post.comments.build(comment_params)
-    @comments = @post.comments
-    @comment.post = @post
-      @new_comment = Comment.new
-    @comment.user_id = current_user.id 
-    authorize @comment
 
     if @comment.save
-      flash[:notice] = 'Comment was saved'
+      redirect_to [@post.topic, @post], notice: "Comment was saved"
     else
-      flash[:error] = 'Comment failed'
+      flash[:alert] = 'Comment failed'
+      redirect_to [@post.topic, @post]
     end
-    respond_with(@comment) do |format|
-      format.html { redirect_to [@post.topic, @post]}
-    end
+    
   end
 
   def destroy

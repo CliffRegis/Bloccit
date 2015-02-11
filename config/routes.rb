@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   
   resources :posts, only: [:index] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments
+      resources :favorites, only: [:create, :destroy]
   post '/up-ballot' => 'ballots#up_ballot', as: :up_ballot
   post '/down-ballot' => 'ballots#down_ballot', as: :down_ballot
 
