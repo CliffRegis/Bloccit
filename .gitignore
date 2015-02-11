@@ -15,8 +15,24 @@
 /log/*.log
 /tmp
 
-# Ignore application configuration
+# solr
+/solr
 
+#config file
 /config/application.yml
 
+# stripe.rb
+stripe.rb
+
+/config/initializers/stripe.rb
+
+
+/config/sunspot.yml
+/devise_secret_key.odt
+# wiki.git
+/wiki.git
+# Ignore application configuration
+/config/application.yml
+
+/devise secret key.odt
 public/uploads
