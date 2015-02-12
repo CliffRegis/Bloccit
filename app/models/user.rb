@@ -9,6 +9,15 @@ class User < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
     mount_uploader :avatar, AvatarUploader
 
+  
+  def admin?
+   role == 'admin'
+  end
+ 
+  def moderator?
+   role == 'moderator'
+  end
+  
   def role?(base_role)
     role == base_role.to_s
   end
